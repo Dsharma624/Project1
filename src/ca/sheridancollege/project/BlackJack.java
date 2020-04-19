@@ -56,10 +56,10 @@ public abstract class BlackJack extends Deck{
             while (true) {
                 System.out.println("Hit or stay?");
                 String playerAns = input.nextLine();
-                if (playerAns.compareToIgnoreCase("h") == 0 || playerAns.compareToIgnoreCase("hit")==0) {
+                if (playerAns.equals("h") || playerAns.equals("hit") || playerAns.equals("H") || playerAns.equals("Hit") || playerAns.equals("HIT")) {
                     deck.dealToPlayer();
                     deck.showPlayerCards();
-                } else if(playerAns.compareToIgnoreCase("s") == 0 || playerAns.compareToIgnoreCase("stay")==0){
+                } else if(playerAns.equals("s") || playerAns.equals("stay") || playerAns.equals("S") || playerAns.equals("Stay") || playerAns.equals("STAY")){
                     break OUTER_LOOP;
                 }
             }
