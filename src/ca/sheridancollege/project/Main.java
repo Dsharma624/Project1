@@ -1,18 +1,18 @@
-/**
- * SYST 17796 Project Winter 2019 Base code.
- * Students can modify and extend to implement their game.
- * Add your name as a modifier and the date!
- * 
+/*
+ * Arianna Biernacki & Devi Sharma
+ * PROG24178 - Software Design
+ * Deliverable 3
+ * Winter Term - 2020
+ *
  */
-package ca.sheridancollege.project;
+package Game;
 
-public class Main {
-
-    public static void main(String[] args) {
+public class Main extends BlackJack{
+    public static void main(String[] args){
+        BlackJack game = new BlackJack() {};
         System.out.println("*********************************************************");
         System.out.println("***************   Welcome to the table!   ***************");
         System.out.println("*********************************************************");
-        Game game = new Game();
         game.start();
     }
-}//end class
+}
