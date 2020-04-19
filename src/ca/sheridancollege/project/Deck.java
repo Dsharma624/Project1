@@ -1,6 +1,6 @@
 /*
  * Arianna Biernacki & Devi Sharma
- * PROG24178 - Software Design
+ * Software Design
  * Deliverable 3
  * Winter Term - 2020
  *
