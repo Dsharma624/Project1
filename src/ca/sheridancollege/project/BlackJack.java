@@ -56,6 +56,7 @@ public abstract class BlackJack extends Deck{
             while (true) {
                 System.out.println("Hit or stay?");
                 String playerAns = input.nextLine();
+                if(BlackJack.userInput(playerAns)){
                 if (playerAns.equals("h") || playerAns.equals("hit") || playerAns.equals("H") || playerAns.equals("Hit") || playerAns.equals("HIT")) {
                     deck.dealToPlayer();
                     deck.showPlayerCards();
@@ -63,6 +64,11 @@ public abstract class BlackJack extends Deck{
                     break OUTER_LOOP;
                 }
             }
+                else{
+                    System.out.println("Give valid input");
+                    }
+            }
+            
 
             OUTER_LOOP:
             while (true) {
@@ -90,5 +96,13 @@ public abstract class BlackJack extends Deck{
                 System.exit(0);
             }
         }
+    }
+    
+    public static boolean userInput(String s){
+    if(s.equalsIgnoreCase("Hit")||s.equalsIgnoreCase("h")||s.equalsIgnoreCase("Stay")||s.equalsIgnoreCase("s")){
+    return true ;
+    }
+    return false;
+    
     }
 }
