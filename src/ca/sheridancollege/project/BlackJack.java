@@ -35,15 +35,19 @@ public abstract class BlackJack extends Deck{
 
     private void game() {
         
+        //infinite loop to run game
         while (true) {
 
             System.out.println();
+            
+            //Checks if the dealer's hand busts when game just begins
             if (deck.checkDealerHand() > 21) {
                 System.out.println("Dealer's hand sum is " + deck.checkDealerHand());
                 System.out.println("Dealer Busted. You won!");
                 System.exit(0);
             }
 
+            //Checks if the player's hand busts when game just begins
             if (player.checkPlayerHand() > 21) {
                 System.out.println("Your hand sum is " + deck.checkPlayerHand());
                 System.out.println("You Busted. Dealer won!");
@@ -52,15 +56,27 @@ public abstract class BlackJack extends Deck{
 
             System.out.println("---------------------------------------------------------");
             System.out.println("                     YOUR TURN                     ");
+            
+            //Player's turn
             OUTER_LOOP:
+           
+            //infinite loop until player stays
             while (true) {
                 System.out.println("Hit or stay?");
+                
+                //Scanner read's player's input to hit or stay
                 String playerAns = input.nextLine();
+                
+                //test case
                 if(BlackJack.userInput(playerAns)){
+                    
+                //If player chooses hit, deal a card to the player and show the new hand
                 if (playerAns.equals("h") || playerAns.equals("hit") || playerAns.equals("H") || playerAns.equals("Hit") || playerAns.equals("HIT")) {
                     deck.dealToPlayer();
                     deck.showPlayerCards();
-                } else if(playerAns.equals("s") || playerAns.equals("stay") || playerAns.equals("S") || playerAns.equals("Stay") || playerAns.equals("STAY")){
+                } 
+                    //If player chooses to stay, break out of the loop
+                    else if(playerAns.equals("s") || playerAns.equals("stay") || playerAns.equals("S") || playerAns.equals("Stay") || playerAns.equals("STAY")){
                     break OUTER_LOOP;
                 }
             }
@@ -69,9 +85,11 @@ public abstract class BlackJack extends Deck{
                     }
             }
             
-
+            //Dealer's hand
             OUTER_LOOP:
             while (true) {
+                
+                //if dealer's hand is less than 16, deal a card to dealer and show the dealer's new hand
                 if (deck.checkDealerHand() < 16) {
                     System.out.println("---------------------------------------------------------");
                     System.out.println("                   DEALER'S TURN                   ");
@@ -81,16 +99,21 @@ public abstract class BlackJack extends Deck{
                 break;
             }
 
+            //If dealer's hand is over 21, dealer busts and system exits
             if (deck.checkDealerHand() > 21) {
                 System.out.println("Dealer Busted. You won!");
                 System.exit(0);
             }
 
+            //If dealer's hand is greater or equal to player's hand, dealer wins
             if (deck.checkDealerHand() >= deck.checkPlayerHand()) {
                 System.out.println("Dealers hand is " + deck.checkDealerHand() + ", Your hand sum is " + deck.checkPlayerHand());
                 System.out.println("Dealer won!");
                 System.exit(0);
-            } else {
+            } 
+            
+            //If player's hand is greater than dealer's hand, then player wins
+            else {
                 System.out.println("Your hand sum is " + deck.checkPlayerHand() + ", Dealer's hand sum is " + deck.checkDealerHand());
                 System.out.println("You won!");
                 System.exit(0);
@@ -98,6 +121,7 @@ public abstract class BlackJack extends Deck{
         }
     }
     
+    //Test
     public static boolean userInput(String s){
     if(s.equalsIgnoreCase("Hit")||s.equalsIgnoreCase("h")||s.equalsIgnoreCase("Stay")||s.equalsIgnoreCase("s")){
     return true ;
