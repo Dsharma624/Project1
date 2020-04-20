@@ -7,6 +7,8 @@
  */
 package Game;
 
+
+//Import
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -20,6 +22,7 @@ public abstract class Deck extends Card {
     ArrayList playerCards = new ArrayList();
     ArrayList dealerCards = new ArrayList();
 
+    //Create the deck
     public void createDeck() {
         String[] suits = new String[]{"Hearts", "Diamonds", "Clubs", "Spades"};
         for (int j = 0; j < 4; j++) {
@@ -32,6 +35,7 @@ public abstract class Deck extends Card {
         }
     }
 
+    //Print the deck
     public void showDeck() {
         for (int i = 0; i < deck.size(); i++) {
             Card card = (Card) deck.get(i);
@@ -39,6 +43,7 @@ public abstract class Deck extends Card {
         }
     }
 
+    //Shuffle the deck
     public void shuffleDeck() {
         Collections.shuffle(deck);
         for (int i = 0; i < deck.size(); i++) {
@@ -46,11 +51,13 @@ public abstract class Deck extends Card {
         }
     }
 
+    //Deal a card to the player
     public void dealToPlayer() {
         Card card = (Card) deck.remove(0);
         playerCards.add(card);
     }
 
+    //Deal a card to the dealer
     public void dealToDealer() {
         Card card = (Card) deck.remove(0);
         dealerCards.add(card);
@@ -96,6 +103,7 @@ public abstract class Deck extends Card {
         this.rank = rank;
     }
     
+    //Print's players hand
     public void showPlayerCards() {
         System.out.println("");
         System.out.println("YOUR HAND: ");
@@ -120,13 +128,18 @@ public abstract class Deck extends Card {
                 System.out.println("   " + card.rank + " of " + card.suit);
             }
         }
+        
+        //Prints the sum of the player's hand
         System.out.println("The player's hand sum is " + checkPlayerHand());
+        
+        //If the hand is over 21 the player busts and system exits
         if (checkPlayerHand() > 21) {
             System.out.println("You Busted. Dealer won!");
             System.exit(0);
         }
     }
 
+    //Prints dealers hand
     public void showDealerCards() {
         System.out.println("");
         System.out.println("DEALER'S HAND: ");
@@ -151,9 +164,12 @@ public abstract class Deck extends Card {
                 System.out.println("   " + card.rank + " of " + card.suit);
             }
         }
+        
+        //prints the sum of the dealer's hand
         System.out.println("The dealer's hand sum is " + checkDealerHand());
     }
     
+    //Calculates player's hand sum
     public int checkPlayerHand() {
         int playerHandSum = 0;
         for (int i = 0; i < playerCards.size(); i++) {
@@ -163,6 +179,7 @@ public abstract class Deck extends Card {
         return playerHandSum;
     }
 
+    //Calculates dealer's hand sum
     public int checkDealerHand() {
         int dealerHandSum = 0;
         for (int i = 0; i < dealerCards.size(); i++) {
