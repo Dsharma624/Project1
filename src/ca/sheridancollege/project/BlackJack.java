@@ -93,7 +93,7 @@ public abstract class BlackJack extends Deck{
                 if (deck.checkDealerHand() < 16) {
                     System.out.println("---------------------------------------------------------");
                     System.out.println("                   DEALER'S TURN                   ");
-                    dealToDealer();
+                    deck.dealToDealer();
                     deck.showDealerCards();
                 }
                 break;
